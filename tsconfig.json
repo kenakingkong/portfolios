@@ -24,13 +24,20 @@
       ]
     },
     "types": [
+      "@nuxtjs/axios",
       "@nuxt/types",
-      "@types/node"
-    ]
+      "@types/express",
+      "@types/jest",
+      "@types/node",
+      "@types/supertest",
+    ],
+    "typeRoots": [
+      "./types"
+    ],
   },
   "exclude": [
     "node_modules",
     ".nuxt",
     "dist"
-  ]
+  ]               
 }

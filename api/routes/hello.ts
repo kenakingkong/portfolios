@@ -4,9 +4,7 @@ import { getHello } from '../controllers/hello';
 const router = Router();
 
 //router.get('/', getHello);
-router.get('/', (req: Request, res: Response) => {
-  res.send('world');
-})
+router.get('/', getHello)
 
 // router.post('/');
 // router.patch('/:id');

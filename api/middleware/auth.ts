@@ -1,14 +1,4 @@
-/**
- * import { config, https } from 'firebase-functions';
-
- * const jwt = require('jsonwebtoken');
-
-const config = {
-  authSecret:'mysecret',
-}
-
-module.exports = config
-
+/*
 module.exports.isAuthenticated = function (req, res, next) {
   var token = req.headers.authorization
   if (token) {

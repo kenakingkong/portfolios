@@ -1,7 +1,7 @@
-import { RequestHandler, response } from 'express';
-import { Hello } from '../models/hello';
+import { RequestHandler } from 'express';
+import Hello from '../models/hello';
 
-export const getHello:RequestHandler = (req, res, next) => {
+export const getHello: RequestHandler = (req, res, next) => {
   //const text = (req.body as { text: string}).text;
   // const id = Math.random().toString();
   // const newHello = new Hello(id, text);

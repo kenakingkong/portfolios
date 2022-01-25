@@ -1,6 +1,6 @@
-export class Hello {
-  constructor(
-    public id: string,
-    public text: string
-  ){};
+interface Hello {
+  id: string,
+  text: string
 }
+
+export default Hello;

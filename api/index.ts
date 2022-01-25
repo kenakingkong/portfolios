@@ -8,11 +8,17 @@ import express, {
   NextFunction
 } from 'express';
 
+
 // const bodyParser = require('body-parser');
 // const cookieParser = require('cookie-parser');
 
 // import api routes 
-//import helloRoutes from './routes/hello';
+import spotifyRoutes from './routes/spotify';
+import helloRoutes from './routes/hello';
+import socialLinkRoutes from './routes/socialLinks';
+
+// import middleware
+import client from './middleware/db';
 
 const app = express();
 
@@ -22,15 +28,12 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(bodyParser.urlencoded({ extended: false }))
 // app.use(cookieParser());
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('api endpoints')
+// add aws db client
+app.use((req: Request, res, next) => {
+  req.client = client;
+  next();
 });
 
-// use api routes
-//app.use('/hello', helloRoutes);
-app.use('/hello', (req: Request, res: Response) => {
-  res.send('world');
-});
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   // do stuff here
@@ -38,21 +41,28 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 })
 
+app.get('/', (req: Request, res: Response) => {
+  res.send('api endpoints')
+});
+
+// use api routes
+app.use('/spotify', spotifyRoutes);
+app.use('/hello', helloRoutes);
+app.use('/socials', socialLinkRoutes);
+
+
 // throw  300, 400 herrors here
 
-/**
- * app.use((req, res, next) => {
-    const err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+// anchor handler for general 404 cases
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.status(404).json({message: 'not found'})
 });
- */
 
-/*
-app.use((err: Error, req: Request, res:Response, next: NextFunction) => {
+// anchor handler for all cases
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.log('hellooooooooo')
   res.status(500).json({message: err.message});
 });
-*/
 
 export default { 
   path: '/api', 
