@@ -13,9 +13,9 @@ import express, {
 // const cookieParser = require('cookie-parser');
 
 // import api routes 
-import spotifyRoutes from './routes/spotify';
 import helloRoutes from './routes/hello';
 import socialLinkRoutes from './routes/socialLinks';
+import spotifyRoutes from './routes/spotify';
 
 // import middleware
 import client from './middleware/db';
@@ -41,14 +41,17 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 })
 
-app.get('/', (req: Request, res: Response) => {
+/*
+app.get('/', (req: Request, res: Response, next: NextFunction) => {
   res.send('api endpoints')
+  next();
 });
+*/
 
 // use api routes
-app.use('/spotify', spotifyRoutes);
 app.use('/hello', helloRoutes);
 app.use('/socials', socialLinkRoutes);
+app.use('/spotify', spotifyRoutes);
 
 
 // throw  300, 400 herrors here

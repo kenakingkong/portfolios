@@ -57,4 +57,4 @@ export const updateSocialLink: RequestHandler = (req, res) => {
 
 export const deleteSocialLink: RequestHandler = (req, res) => {
   res.status(200)
-}
+};

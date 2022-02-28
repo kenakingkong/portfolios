@@ -1,6 +1,5 @@
 import SiteTypes from './siteTypes';
-
-interface SocialLink {
+export interface SocialLink {
   id: string,
   name: string,
   url: string,

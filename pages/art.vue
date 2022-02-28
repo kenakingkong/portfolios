@@ -1,5 +1,6 @@
 <template>
 <div>
+  <ArtLogo />
   art
 </div>
 </template>
@@ -8,7 +9,9 @@
 </style>
 
 <script lang="ts">
+import ArtLogo from '~/assets/logos/logo_art.svg?inline';
 export default {
-  name: "ArtPage"
+  name: "ArtPage",
+  components: { ArtLogo }
 }
 </script>

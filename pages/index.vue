@@ -1,6 +1,6 @@
 <template>
 <main>
-  <SharedNav />
+  <Logo />
   <SharedMarquee text="hi, i'm makena kong" />
   <NuxtLink to="/dev">dev</NuxtLink>
   <NuxtLink to="art">art</NuxtLink>
@@ -10,10 +10,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import SharedNav from '~/components/SharedNav.vue'
+import Logo from '~/assets/logos/logo.svg?inline';
 
 export default Vue.extend({
-  components: { SharedNav },
+  components: { Logo },
   name: 'IndexPage',
   methods: {
     async showMessageFromBackend () {
@@ -28,3 +28,12 @@ export default Vue.extend({
   }
 })
 </script>
+
+<style scoped>
+a {
+  color: black;
+  text-decoration: none;
+  font-size: 6rem;
+  margin: 2rem;
+}
+</style>

@@ -1,4 +1,4 @@
-enum SiteTypes {
+export enum SiteTypes {
   dev = 'dev',
   art = 'art'
 };
