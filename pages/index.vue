@@ -1,10 +1,12 @@
 <template>
 <main>
   <Logo />
-  <SharedMarquee text="hi, i'm makena kong" />
-  <NuxtLink to="/dev">dev</NuxtLink>
-  <NuxtLink to="art">art</NuxtLink>
-  <button @click="showMessageFromBackend">Show message from backend</button>
+  <h1>
+    hi, i'm makena kong.
+    check out my <NuxtLink to="/dev">dev</NuxtLink> stuff or 
+    check out my <NuxtLink to="art">art</NuxtLink> stuff
+  </h1>
+  <!--<button @click="showMessageFromBackend">Show message from backend</button>-->
 </main>
 </template>
 
@@ -30,10 +32,15 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+main {
+  padding: var(--space-1);
+}
+h1 {
+  margin: var(--space-y-2);
+  font-size: var(--xxl);
+  line-height: 100%;
+}
 a {
   color: black;
-  text-decoration: none;
-  font-size: 6rem;
-  margin: 2rem;
 }
 </style>

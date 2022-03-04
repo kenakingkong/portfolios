@@ -25,16 +25,21 @@
     },
     "types": [
       "@nuxtjs/axios",
-      "@nuxt/types",
+      "@nuxtjs/auth-next",
       "@types/express",
       "@types/jest",
       "@types/node",
       "@types/supertest",
+      "@nuxt/types",
     ],
     "typeRoots": [
       "./types"
     ],
   },
+  "include": [
+    "src/**/*", 
+    "tests/**/*"
+  ],
   "exclude": [
     "node_modules",
     ".nuxt",

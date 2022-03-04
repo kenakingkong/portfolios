@@ -5,8 +5,8 @@ describe('Hello Endpoints', () => {
     try {
       const response = await axios.get('/api/hello')
       console.log(response)
-    } catch {
-      console.log('idk')
+    } catch(err) {
+      console.log(err)
     }
   })
 })

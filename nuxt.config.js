@@ -18,6 +18,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/css/main.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -29,6 +30,8 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/fontawesome',
+    '@nuxtjs/google-fonts',
     "@nuxtjs/svg",
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
@@ -36,7 +39,9 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
+    '@nuxtjs/style-resources',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -47,4 +52,36 @@ export default {
   serverMiddleware: [
     '~/api'
   ],
+
+  // auth
+  auth: {
+    strategies: {
+      github: {
+        clientId: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_SECRET_KEY
+      },
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/'
+    }
+  },
+
+  // icons
+  fontawesome: {
+    icons: {
+      solid: [ 'faLocationDot', 'faUpRightFromSquare'],
+      brands: [ 'faLinkedin', 'faGithub', 'faMedium', 'faInstagram']
+    },
+  },
+
+  // fonts
+  googleFonts: {
+    families: {
+      'Playfair+Display': true,
+      'Open+Sans': true,
+    }
+  },
 }

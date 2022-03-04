@@ -8,17 +8,18 @@ export const getAllSocialLinks: RequestHandler = (req, res) => {
   const params: any = { TableName: TABLENAME };
   req.client.scan(params, (err: Error, data: any) => {
     if (err)
-      res.status(404).json({ message: "not found "})
+      res.status(404).json({ message: "not found " })
     else {
       if (req.query[SiteTypes.art])
         res.status(201).json(data.Items.filter(
           (item: SocialLink) => item.type === SiteTypes.art)
         );
-      if (req.query[SiteTypes.dev])
+      else if (req.query[SiteTypes.dev])
         res.status(201).json(data.Items.filter(
           (item: SocialLink) => item.type === SiteTypes.dev)
         );
-      res.status(201).json(data.Items)
+      else
+        res.status(201).json(data.Items)
     }
   });
 };
@@ -30,8 +31,8 @@ export const createSocialLink: RequestHandler = (req, res) => {
   const icon = (req.body as { icon: string }).icon;
   const type = (req.body as { type: SiteTypes }).type;
 
-  const newSocialLink: SocialLink = { 
-    id, name, url, icon, type 
+  const newSocialLink: SocialLink = {
+    id, name, url, icon, type
   };
 
   const params = {
@@ -43,7 +44,7 @@ export const createSocialLink: RequestHandler = (req, res) => {
     if (err) {
       console.log("Unable to add item");
       console.error("Error JSON:", JSON.stringify(err, null, 2));
-      res.status(400).json({ message: "Unable to add item."})
+      res.status(400).json({ message: "Unable to add item." })
     } else {
       console.log("Added item:", JSON.stringify(data, null, 2));
       res.status(201).json(newSocialLink);

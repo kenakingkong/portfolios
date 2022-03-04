@@ -1,8 +1,14 @@
 import { Router } from 'express';
-import { getHello } from '../controllers/hello';
+import { 
+  getLastPlayedSong, 
+  getSpotifyTest 
+} from '../controllers/spotify';
 
 const router = Router();
 
-router.get('/', getHello)
+router.get('/', getSpotifyTest)
+
+router.get('/lastPlayedSong', getLastPlayedSong);
+
 
 export default router;

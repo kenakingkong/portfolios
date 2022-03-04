@@ -2,8 +2,8 @@
 // https://typeofnan.dev/your-first-node-express-app-with-typescript/
 // https://blog.like.co/nuxt-js-express-api-in-typescript-on-firebase-cloud-functions-ae43cf717992
 
-import express, { 
-  Request, 
+import express, {
+  Request,
   Response,
   NextFunction
 } from 'express';
@@ -34,7 +34,6 @@ app.use((req: Request, res, next) => {
   next();
 });
 
-
 app.use((req: Request, res: Response, next: NextFunction) => {
   // do stuff here
   // like set user session or osme shit
@@ -53,21 +52,20 @@ app.use('/hello', helloRoutes);
 app.use('/socials', socialLinkRoutes);
 app.use('/spotify', spotifyRoutes);
 
-
 // throw  300, 400 herrors here
 
 // anchor handler for general 404 cases
 app.use((req: Request, res: Response, next: NextFunction) => {
-  res.status(404).json({message: 'not found'})
+  res.status(404).json({ message: 'not found' })
 });
 
 // anchor handler for all cases
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.log('hellooooooooo')
-  res.status(500).json({message: err.message});
+  res.status(500).json({ message: err.message });
 });
 
-export default { 
-  path: '/api', 
+export default {
+  path: '/api',
   handler: app
 };
