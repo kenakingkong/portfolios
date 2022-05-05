@@ -16,7 +16,7 @@
 
   /* font size */
   --xs: 0.8em;
-  --sm: 1em;
+  --sm: 1.125em;
   --md: 1.5em;
   --lg: 2em;
   --xl: 3.5em;
@@ -24,10 +24,23 @@
 
   /* spacing */
   --space-1: 1rem;
+  --space-2: 2rem;
+  --space-4: 4rem;
+  --space-6: 6rem;
+  --space-8: 8rem;
+  
   --space-y-1: 1rem 0rem;
-  --space-x-1: 0rem 1rem;
   --space-y-2: 2rem 0rem;
+  --space-y-4: 2rem 0rem;
+  --space-y-6: 6rem 0rem;
+  --space-y-8: 8rem 0rem;
+
+  --space-x-1: 0rem 1rem;
   --space-x-2: 0rem 2rem;
+  --space-x-4: 0rem 2rem;
+  --space-x-6: 0rem 6rem;
+  --space-x-8: 0rem 8rem;
+
 }
 
 body {

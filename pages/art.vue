@@ -15,6 +15,7 @@
       </a>
     </div>
   </div>
+  <div class="section-content">stuff is coming soon :-)</div>
 </main>
 </template>
 
@@ -38,18 +39,23 @@
 .section-nav__icons a:hover {
   color: var(--black);
 }
+
+.section-content {
+  padding: var(--space-6);
+  text-align: center;
+}
 </style>
 
 <script lang="ts">
 import Vue from 'vue'
-import SocialLink from '~/api/models/socialLink'
+import ISocialLink from '~/api/models/socialLink'
 import ArtLogo from '~/assets/logos/logo_art.svg?inline'
 
 export default Vue.extend({
   name: 'ArtPage',
   components: { ArtLogo },
   data: () => ({
-    socials: [] as SocialLink[],
+    socials: [] as ISocialLink[],
   }),
   created() {
     this.$axios.get('/api/socials?art=true').then((res: any) => this.setSocials(res))

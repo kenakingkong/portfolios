@@ -72,7 +72,7 @@ export default {
   // icons
   fontawesome: {
     icons: {
-      solid: [ 'faLocationDot', 'faUpRightFromSquare'],
+      solid: [ 'faLocationDot', 'faUpRightFromSquare', 'faSitemap', 'faHandHoldingHeart', 'faFileCode'],
       brands: [ 'faLinkedin', 'faGithub', 'faMedium', 'faInstagram']
     },
   },

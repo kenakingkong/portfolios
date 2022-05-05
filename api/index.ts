@@ -8,17 +8,20 @@ import express, {
   NextFunction
 } from 'express';
 
-
 // const bodyParser = require('body-parser');
 // const cookieParser = require('cookie-parser');
 
 // import api routes 
 import helloRoutes from './routes/hello';
 import socialLinkRoutes from './routes/socialLinks';
+import updateRoutes from './routes/updates';
 import spotifyRoutes from './routes/spotify';
 
 // import middleware
 import client from './middleware/db';
+
+//import custom types
+import { IRequest } from '../types/request';
 
 const app = express();
 
@@ -29,39 +32,33 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 
 // add aws db client
-app.use((req: Request, res, next) => {
+app.use((req: IRequest, res, next) => {
   req.client = client;
   next();
 });
 
-app.use((req: Request, res: Response, next: NextFunction) => {
+app.use((req: IRequest, res: Response, next: NextFunction) => {
   // do stuff here
   // like set user session or osme shit
   next();
 })
 
-/*
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
-  res.send('api endpoints')
-  next();
-});
-*/
-
 // use api routes
 app.use('/hello', helloRoutes);
 app.use('/socials', socialLinkRoutes);
+app.use('/updates', updateRoutes);
 app.use('/spotify', spotifyRoutes);
 
 // throw  300, 400 herrors here
 
 // anchor handler for general 404 cases
-app.use((req: Request, res: Response, next: NextFunction) => {
+app.use((req: IRequest, res: Response, next: NextFunction) => {
+  console.log(req)
   res.status(404).json({ message: 'not found' })
 });
 
 // anchor handler for all cases
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.log('hellooooooooo')
+app.use((err: Error, req: IRequest, res: Response, next: NextFunction) => {
   res.status(500).json({ message: err.message });
 });
 
