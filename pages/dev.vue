@@ -5,7 +5,6 @@
       <div class="left-section">
         <div class="section-name">
           <h2>makena kong</h2>
-          <p>she/they</p>
         </div>
         <div class="section-info">
           <h1>full stack engineer</h1>
