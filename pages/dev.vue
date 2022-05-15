@@ -28,8 +28,13 @@
 
       <div class="right-section">
         <h3>what i've been up to</h3>
-        <ul class="section-updates">
-          <li v-for="update in updates" :key="'update-' + update.id">
+        <ul class="section-updates" ref="updates">
+          <li
+            v-for="update in updates"
+            :key="'update-' + update.id"
+            class="section-updates__update"
+            style="right: -4rem; opacity: 0"
+          >
             <a :href="update.url" target="_blank" rel="noopener noreferer">
               <font-awesome-icon :icon="['fas', update.icon]" class="fa-1x" />
               <div class="section-updates__content">
@@ -45,7 +50,7 @@
   </main>
 </template>
 
-<style src="~/public/css/dev.css" lang="css" scoped/>
+<style src="~/public/css/dev.css" lang="css" scoped></style>
 
 <script lang="ts">
 import Vue from "vue";
@@ -53,6 +58,7 @@ import ISocialLink from "~/models/socialLink";
 import IDevUpdate from "~/models/devUpdate";
 import LogoDev from "~/components/LogoDev.vue";
 import SiteTypes from "~/models/siteTypes";
+import { gsap } from "gsap";
 
 export default Vue.extend({
   name: "DevPage",
@@ -93,6 +99,17 @@ export default Vue.extend({
 
     getSocials();
     getUpdates();
+  },
+  updated() {
+    if (!this.$refs.updates) return;
+    const q = gsap.utils.selector(this.$refs.updates);
+    gsap.to(q(".section-updates__update"), {
+      x: 0,
+      opacity: 1,
+      stagger: 0.5,
+      duration: 2,
+      ease: 'power3'
+    });
   },
 });
 </script>

@@ -67,8 +67,16 @@ main {
   color: magenta;
 }
 
+
+
+/**
+UPDATE SECTION
+**/
+
+
 .right-section {
   text-align: center;
+  min-width: 40%;
 }
 
 .right-section h3 {
@@ -130,6 +138,11 @@ main {
   margin: 0
 }
 
+
+/**
+REPSONSIVE THINGS
+**/
+
 @media only screen and (min-width: 992px) {
   .container {
     padding: var(--space-x-6);
@@ -151,6 +164,9 @@ main {
   }
   .section-icons a {
     font-size: var(--sm);
+  }
+  .section-updates {
+    min-width: 100%;
   }
   .section-updates svg {
     margin: 0;
@@ -179,6 +195,9 @@ main {
   }
   .section-icons {
     justify-content: start;
+  }
+  .section-updates {
+    min-width: 55%;
   }
   .section-updates svg {
     margin: 0;

@@ -91,7 +91,7 @@
   </main>
 </template>
 
-<style src="~/public/css/art.css" lang="css" scoped/>
+<style src="~/public/css/art.css" lang="css" scoped></style>
 
 <script lang="ts">
 import Vue from "vue";
@@ -120,8 +120,8 @@ export default Vue.extend({
     return {
       galleryPosition: { top: 0, left: 0, x: 0, y: 0 },
       socials: [] as ISocialLink[],
-      totalPieces: 0 as number,
-      activeCollection: null as string | null,
+      totalPieces: 0 as Number,
+      activeCollection: null as String | null,
       collections: [] as IArtCollection[],
       pieces: [] as IArtPiece[],
     };
