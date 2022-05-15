@@ -27,16 +27,16 @@ div {
 </style>
 
 <script lang="ts">
-import Logo from '~/assets/logos/logo.svg?inline'
+import Logo from "~/components/Logo.vue";
 
 export default {
-  name: 'EditIndexPage',
+  name: "EditIndexPage",
   components: { Logo },
-  middleware: 'auth',
+  middleware: "auth",
   methods: {
     logOut() {
-      this.$auth.logout('github')
+      this.$auth.logout("github");
     },
   },
-}
+};
 </script>

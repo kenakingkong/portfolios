@@ -1,146 +1,207 @@
 <template>
   <main>
-    <div class="section-nav">
-      <ArtLogo />
-      <ul class="section-nav__collections">
+    <!-- TOP NAV -->
+    <nav class="section-nav__logo">
+      <LogoArt />
+    </nav>
+    <nav class="section-nav__about-me">
+      <button>about me</button>
+    </nav>
+
+    <!-- BOTTOM NAV -->
+    <nav class="section-nav__collections">
+      <ul>
         <li
           v-for="collection in collections"
-          :key="collection - 'collection.id'"
+          :key="'collection-' + collection.id"
         >
-          <button>
+          <button
+            @click="changeCollection(collection.id)"
+            :class="activeCollection === collection.id ? 'active' : ''"
+          >
             {{ collection.label }} <span>{{ collection.count }}</span>
           </button>
         </li>
       </ul>
-      <div class="section-nav__about">
-        <button>about me</button>
+    </nav>
+
+    <!-- GALLERY -->
+    <div
+      class="section-gallery"
+      ref="gallery"
+      @mousedown="handleMouseDown"
+      @mouseup="handleMouseUp"
+      @mousemove="handleMouseMove"
+      :style="
+        'height: ' +
+        Math.round(totalPieces / 4) * 250 +
+        'px;' +
+        'width: ' +
+        Math.round(totalPieces / 2) * 250 +
+        'px;'
+      "
+    >
+      <div v-for="piece in pieces" :key="'piece-'+piece.id" class="piece">
+        <img
+          :src="piece.url"
+          :alt="piece.title"
+          :style="
+            'margin-left: ' +
+            Math.floor(Math.random() * 8) +
+            'rem; ' +
+            'margin-right: ' +
+            Math.floor(Math.random() * 8) +
+            'rem; ' +
+            'margin-top: ' +
+            Math.floor(Math.random() * 8) +
+            'rem; ' +
+            'margin-bottom: ' +
+            Math.floor(Math.random() * 8) +
+            'rem; '
+          "
+        />
       </div>
     </div>
-    <div class="section-content">
-      <div class="section-content__section">collection one stuff</div>
-      <div class="section-content__section">collection two</div>
-      <div class="section-content__section">collection three</div>
-      <div class="section-content__section">
-        about me stuff
-        <div class="section-content__icons">
-          <a
-            v-for="social in socials"
-            :key="social - 'social.icon'"
-            :href="social.url"
-            target="_blank"
-            rel="noopener noreferer"
-          >
-            <font-awesome-icon :icon="['fab', social.icon]" class="fa-1x" />
-            {{ social.name }}
-          </a>
-        </div>
-      </div>
+    <!--
+      <h2>
+      i'm makena kong and i ...
+      <ul>
+        <li>paint dog portraits</li>
+        <li>crochet things</li>
+        <li>occassionally sew clothes</li>
+        <li>try to refurbish furniture</li>
+        <li>woodwork (barely)</li>
+        <li>paint on things</li>
+        <li>try to be a graphic designer</li>
+      </ul>
+    </h2>
+    <div class="section-content__icons">
+      <a
+        v-for="social in socials"
+        :key="social - 'social.icon'"
+        :href="social.url"
+        target="_blank"
+        rel="noopener noreferer"
+      >
+        <font-awesome-icon :icon="['fab', social.icon]" class="fa-1x" />
+        {{ social.name }}
+      </a>
     </div>
+    -->
   </main>
 </template>
 
-<style scoped>
-main{
-  width: 100%
-}
-.section-nav {
-  padding: var(--space-1);
-  display: inline-block;
-  vertical-align: top;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  background-color: aqua;
-}
-
-.section-nav__collections {
-  list-style: none;
-  padding-left: 0;
-}
-
-.section-nav__collections span {
-  font-size: var(--xxs);
-  padding: 0.25rem;
-  vertical-align: top;
-}
-
-.section-content {
-  padding: var(--space-6);
-  display: inline-block;
-  text-align: center;
-  flex-grow: 1;
-  background-color: pink;
-}
-
-.section-content__section {
-  height: 60vh
-}
-
-.section-content__icons {
-  margin-left: 2rem;
-}
-.section-content__icons a {
-  color: var(--purple);
-  font-weight: 800;
-  margin-left: 1rem;
-  text-decoration: none;
-}
-
-.section-content__icons a:hover {
-  color: var(--black);
-}
-
-button {
-  border: none;
-  color: var(--black);
-  background-color: transparent;
-  cursor: pointer;
-  font-size: var(--lg);
-  font-family: var(--title);
-  font-weight: 600;
-}
-
-button:hover {
-  color: var(--purple);
-}
-</style>
+<style src="~/public/css/art.css" lang="css" scoped/>
 
 <script lang="ts">
 import Vue from "vue";
-import ISocialLink from "~/api/models/socialLink";
-import ArtLogo from "~/assets/logos/logo_art.svg?inline";
+import ISocialLink from "~/models/socialLink";
+import IArtPiece from "~/models/artPiece";
+import IArtCollection from "~/models/artCollection";
+import LogoArt from "~/components/LogoArt.vue";
+import SiteTypes from "~/models/siteTypes";
 
 export default Vue.extend({
   name: "ArtPage",
-  components: { ArtLogo },
-  data: () => ({
-    socials: [] as ISocialLink[],
-    collections: [
-      {
-        id: "collection_1",
-        label: "collection 1",
-        count: 3,
-      },
-      {
-        id: "collectionss_2",
-        label: "collectionss 2",
-        count: 6,
-      },
-      {
-        id: "three",
-        label: "three",
-        count: 2,
-      },
-    ],
-  }),
+  components: { LogoArt },
+  head() {
+    return {
+      title: "makena's art <3",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: "i'm makena kong and this is my art",
+        },
+      ],
+    };
+  },
+  data() {
+    return {
+      galleryPosition: { top: 0, left: 0, x: 0, y: 0 },
+      socials: [] as ISocialLink[],
+      totalPieces: 0 as number,
+      activeCollection: null as string | null,
+      collections: [] as IArtCollection[],
+      pieces: [] as IArtPiece[],
+    };
+  },
   created() {
-    this.$axios
-      .get("/api/socials?art=true")
-      .then((res: any) => this.setSocials(res));
+    const getSocials = () => {
+      const dbSocials = this.$fire.database.ref("socialLinks");
+      dbSocials.get().then((snapshot: any) => {
+        this.socials = snapshot
+          .val()
+          .filter((x: ISocialLink) => x.type === SiteTypes.art);
+      });
+    };
+
+    const getPieces = () => {
+      const dbUpdates = this.$fire.database.ref("artPieces");
+      dbUpdates.get().then((snapshot: any) => {
+        this.pieces = snapshot.val();
+        this.totalPieces = snapshot.val().length;
+      });
+    };
+
+    const getCollections = () => {
+      const dbUpdates = this.$fire.database.ref("artCollections");
+      dbUpdates.get().then((snapshot: any) => {
+        this.collections = snapshot.val();
+      });
+    };
+
+    getSocials();
+    getPieces();
+    getCollections();
   },
   methods: {
-    setSocials(response: any) {
-      this.socials = response.data;
+    changeCollection(collectionId: string) {
+      this.activeCollection = collectionId;
+    },
+    handleMouseDown(event: MouseEvent) {
+      if (!this.$refs.gallery) return;
+      const ref = this.$refs.gallery as HTMLDivElement;
+
+      console.log("mouse down");
+
+      ref.style.cursor = "grabbing";
+      ref.style.userSelect = "none";
+
+      // get current position
+      this.galleryPosition = {
+        // The current scroll
+        left: ref.scrollLeft,
+        top: ref.scrollTop,
+
+        // Get the current mouse position
+        x: event.clientX,
+        y: event.clientY,
+      };
+      console.log(this.galleryPosition);
+    },
+    handleMouseUp(event: MouseEvent) {
+      if (!this.$refs.gallery) return;
+      const ref = this.$refs.gallery as HTMLDivElement;
+
+      console.log("mouse up");
+
+      ref.style.cursor = "grab";
+      ref.style.removeProperty("user-select");
+    },
+    handleMouseMove(event: MouseEvent) {
+      if (!this.$refs.gallery) return;
+      const ref = this.$refs.gallery as HTMLDivElement;
+
+      console.log("mouse move");
+
+      // How far the mouse has been moved
+      const dx = event.clientX - this.galleryPosition.x;
+      const dy = event.clientY - this.galleryPosition.y;
+
+      // Scroll the element
+      ref.scrollTop = this.galleryPosition.top - dy;
+      ref.scrollLeft = this.galleryPosition.left - dx;
     },
   },
 });

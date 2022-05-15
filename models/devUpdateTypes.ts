@@ -1,7 +1,7 @@
-export enum UpdateTypes {
+enum DevUpdateTypes {
   volunteer = 'volunteer',
   career = 'career',
   project = 'project'
 };
 
-export default UpdateTypes;
+export default DevUpdateTypes;

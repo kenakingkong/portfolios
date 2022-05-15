@@ -1,6 +1,6 @@
 <template>
   <main>
-    <DevLogo class="logo" />
+    <LogoDev class="logo" />
     <div class="container">
       <div class="left-section">
         <div class="section-name">
@@ -16,7 +16,7 @@
         <div class="section-icons">
           <a
             v-for="social in socials"
-            :key="social - 'social.icon'"
+            :key="'social-' + social.id"
             :href="social.url"
             target="_blank"
             rel="noopener noreferer"
@@ -25,16 +25,12 @@
           </a>
         </div>
       </div>
-      
+
       <div class="right-section">
         <h3>what i've been up to</h3>
         <ul class="section-updates">
-          <li v-for="update in updates" :key="update - 'update.id'">  
-            <a
-              :href="update.url"
-              target="_blank"
-              rel="noopener noreferer"
-            >
+          <li v-for="update in updates" :key="'update-' + update.id">
+            <a :href="update.url" target="_blank" rel="noopener noreferer">
               <font-awesome-icon :icon="['fas', update.icon]" class="fa-1x" />
               <div class="section-updates__content">
                 <p class="section-updates__title">{{ update.title }}</p>
@@ -49,34 +45,54 @@
   </main>
 </template>
 
-<style src="../assets/css/dev.css" lang="css" scoped/>
+<style src="~/public/css/dev.css" lang="css" scoped/>
 
 <script lang="ts">
-import Vue from 'vue'
-import ISocialLink from '~/models/socialLink'
-import IUpdate from '~/models/update'
-import DevLogo from "~/assets/logos/logo_dev.svg?inline"
+import Vue from "vue";
+import ISocialLink from "~/models/socialLink";
+import IDevUpdate from "~/models/devUpdate";
+import LogoDev from "~/components/LogoDev.vue";
+import SiteTypes from "~/models/siteTypes";
 
 export default Vue.extend({
-  name: 'DevPage',
-  components: {
-    DevLogo,
+  name: "DevPage",
+  components: { LogoDev },
+  head() {
+    return {
+      title: "makena's dev <3",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content:
+            "i'm makena kong - a full stack engineer based in san francisco",
+        },
+      ],
+    };
   },
   data: () => ({
     socials: [] as ISocialLink[],
-    updates: [] as IUpdate[]
+    updates: [] as IDevUpdate[],
   }),
   created() {
-    this.$axios.get('/api/socials?dev=true').then((res: any) => this.setSocials(res))
-    this.$axios.get('/api/updates').then((res: any) => this.setUpdates(res))
+    const getSocials = () => {
+      const dbSocials = this.$fire.database.ref("socialLinks");
+      dbSocials.get().then((snapshot) => {
+        this.socials = snapshot
+          .val()
+          .filter((x: ISocialLink) => x.type === SiteTypes.dev);
+      });
+    };
+
+    const getUpdates = () => {
+      const dbUpdates = this.$fire.database.ref("devUpdates");
+      dbUpdates.get().then((snapshot) => {
+        this.updates = snapshot.val();
+      });
+    };
+
+    getSocials();
+    getUpdates();
   },
-  methods: {
-    setSocials(response: any) {
-      this.socials = response.data;
-    },
-    setUpdates(response: any) {
-      this.updates = response.data
-    }
-  }
-})
+});
 </script>

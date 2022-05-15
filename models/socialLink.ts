@@ -1,6 +1,6 @@
 import SiteTypes from './siteTypes';
 
-export interface ISocialLink {
+interface ISocialLink {
   id: string,
   name: string,
   url: string,

@@ -1,0 +1,117 @@
+main {
+  width: 100%;
+}
+
+/**
+ NAV STYLES
+*/
+
+.section-nav__logo {
+  position: fixed;
+  top: 0rem;
+  left: 0.5rem;
+  padding: 0.5rem;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.section-nav__about-me {
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.section-nav__collections {
+  position: fixed;
+  bottom: 0rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(360deg, #ffffff 50%, rgba(255, 255, 255, 0) 100%);
+  width: 100%;
+  padding-top: var(--space-1);
+  padding-bottom: 0;
+}
+
+.section-nav__collections ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--space-1);
+  margin: var(--space-1);
+  margin-bottom: 0.5rem;
+}
+
+.section-nav__collections li {
+  list-style-type: none;
+  font-size: var(--xs);
+}
+
+.section-nav__collections span {
+  vertical-align: top;
+  font-size: var(--xxs);
+}
+
+/**
+ GALLERY & PIECE STYLES
+*/
+
+.section-gallery {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  cursor: grab;
+  overflow: auto;
+}
+
+.section-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.piece {
+  width: 250px;
+  height: 250px;
+  display: inline-block;
+}
+
+.piece img {
+  object-fit: contain;
+  height: 60%;
+  width: 60%;
+}
+
+/**
+ BUTTON STYLES
+*/
+
+button {
+  border: none;
+  color: var(--black);
+  background-color: transparent;
+  cursor: pointer;
+  font-size: var(--sm);
+  font-family: var(--title);
+  font-weight: 800;
+}
+
+.active {
+  color: var(--purple);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.active span {
+  color: var(--purple);
+  text-decoration: none;
+}
+
+button:hover {
+  color: var(--purple);
+}

@@ -1,0 +1,242 @@
+{
+  "socialLinks": [
+    {
+      "id": 1,
+      "icon": "instagram",
+      "name": "art",
+      "type": "art",
+      "url": "https://instagram.com/maks_ugly_ass_art"
+    },
+    {
+      "id": 2,
+      "icon": "github",
+      "name": "'@kenakingkong",
+      "type": "dev",
+      "url": "https://github.com/kenakingkong"
+    },
+    {
+      "id": 3,
+      "icon": "linkedin",
+      "name": "'@makenakong",
+      "type": "dev",
+      "url": "https://linkedin.com/in/makenakong"
+    },
+    {
+      "id": 4,
+      "icon": "medium",
+      "name": "'@makenakong",
+      "type": "dev",
+      "url": "https://medium.com/@makenakong"
+    },
+    {
+      "id": 5,
+      "icon": "instagram",
+      "name": "yarn",
+      "type": "art",
+      "url": "https://instagram.com/mak_makes_things"
+    }
+  ],
+  "devUpdates": [
+    {
+      "id": 1,
+      "date": "feb 2022",
+      "icon": "hand-holding-heart",
+      "subtitle": "redesigning & rebuilding the wordpress site for a bay area non-profit org",
+      "title": "volunteer developer @ recares",
+      "type": "volunteer",
+      "url": "https://www.recares.org"
+    },
+    {
+      "id": 2,
+      "date": "jan 2022",
+      "icon": "file-code",
+      "subtitle": "building the community round site so we can petition startups!",
+      "title": "community round @ wefunder",
+      "type": "project",
+      "url": "https://communityround.com"
+    },
+    {
+      "id": 3,
+      "date": "dec 2021",
+      "icon": "hand-holding-heart",
+      "subtitle": "helping high schoolers in bay view through their coding journeys",
+      "title": "volunteer cs instructor @ code nation",
+      "type": "volunteer",
+      "url": "https://codenation.org"
+    },
+    {
+      "id": 4,
+      "date": "oct 2021",
+      "icon": "sitemap",
+      "subtitle": "joined the product team - focusing on growth, virality, and rebranding at wefunder",
+      "title": "community team @ wefunder",
+      "type": "career",
+      "url": "https://wefunder.com"
+    },
+    {
+      "id": 5,
+      "date": "dec 2021",
+      "icon": "hand-holding-heart",
+      "subtitle": "ui/ux redesign for a non-profit site",
+      "title": "volunteer desginer @ the prosparity project",
+      "type": "volunteer",
+      "url": "https://theprosparityproject.org"
+    },
+    {
+      "id": 6,
+      "date": "apr 2021",
+      "icon": "sitemap",
+      "subtitle": "first full time software engineering job!",
+      "title": "full stack engineer @ wefunder",
+      "type": "career",
+      "url": "https://wefunder.com"
+    },
+    {
+      "id": 7,
+      "date": "jan 2021",
+      "icon": "sitemap",
+      "subtitle": "idk",
+      "title": "software engineering intern @ wefunder",
+      "type": "career",
+      "url": "https://wefunder.com"
+    }
+  ], 
+  "artCollections" : [
+    {
+      "id": "collection_1",
+      "label": "concept"
+    },
+    {
+      "id": "collection_2",
+      "label": "pet portraits"
+    },
+    {
+      "id": "collection_3",
+      "label": "still life"
+    },
+    {
+      "id": "collection_4",
+      "label": "people"
+    },
+    {
+      "id": "collection_5",
+      "label": "watercolor"
+    }
+  ],
+  "artPieces": [
+    {
+      "id": "piece_1",
+      "title": "Child of the Universe",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Child+of+the+Universe.jpg",
+      "collection": "collection_1"
+    },
+    {
+      "id": "piece_2",
+      "title": "Untitled",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Where+does+reality+live.jpg",
+      "collection": "collection_1"
+    },
+    {
+      "id": "piece_3",
+      "title": "Quarantine & Wine",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Quarantine+%26+Wine.jpg",
+      "collection": "collection_1"
+    },
+    {
+      "id": "piece_4",
+      "title": "Untitled",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Empty+%26+Faceless.jpg",
+      "collection": "collection_1"
+    },
+    {
+      "id": "piece_5",
+      "title": "Imagined Self",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Imagined+Self%2C+Deconstructed.jpg",
+      "collection": "collection_1"
+    },
+    {
+      "id": "piece_6",
+      "title": "Rico, inquisitive",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Rico%2C+Inquisitive.jpg",
+      "collection": "collection_2"
+    },
+    {
+      "id": "piece_7",
+      "title": "Evie, spoiled",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Evie%2C+Spoiled.jpg",
+      "collection": "collection_2"
+    },
+    {
+      "id": "piece_8",
+      "title": "Harley & Chicken, ugly",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Harley+%26+Chase%2C+Waiting.jpg",
+      "collection": "collection_2"
+    },
+    {
+      "id": "piece_9",
+      "title": "Wendy, anxious",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Wendy%2C+Anxious.jpg",
+      "collection": "collection_2"
+    },
+    {
+      "id": "piece_10",
+      "title": "Kula, sad",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Kula%2C+Sad.jpg",
+      "collection": "collection_2"
+    },
+    {
+      "id": "piece_11",
+      "title": "Funky Vase",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Funky+Vase.jpg",
+      "collection": "collection_3"
+    },
+    {
+      "id": "piece_12",
+      "title": "Diabetes",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Diabetes.jpg",
+      "collection": "collection_3"
+    },
+    {
+      "id": "piece_13",
+      "title": "Fruit & Mirror",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Fruit+%26+Mirror.jpg",
+      "collection": "collection_3"
+    },
+    {
+      "id": "piece_14",
+      "title": "idk",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Weird+Shapes+%26+Wine.jpg",
+      "collection": "collection_3"
+    },
+    {
+      "id": "piece_15",
+      "title": "bb pumpkin",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Baby+Pumpkin.jpg",
+      "collection": "collection_3"
+    },
+    {
+      "id": "piece_16",
+      "title": "Dave, naked",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Dave%2C+Naked.jpg",
+      "collection": "collection_4"
+    },
+    {
+      "id": "piece_17",
+      "title": "Max, Old fashion",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Max%2C+Old+Fashion.jpg",
+      "collection": "collection_4"
+    },
+    {
+      "id": "piece_18",
+      "title": "Blobs idk",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/Blobs.jpg",
+      "collection": "collection_4"
+    },
+    {
+      "id": "piece_19",
+      "title": "how the turns tabled",
+      "url": "https://s3-us-west-1.amazonaws.com/art.makenakong.com/images/The+Subject+as+The+Artist.jpg",
+      "collection": "collection_4"
+    }
+  ]
+}

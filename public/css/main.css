@@ -1,0 +1,111 @@
+/*
+  ROOT CSS STYLES
+*/
+
+:root {
+  /* colors */
+  --white: #ffffff;
+  --black: #000000;
+  --purple: #6b4164;
+  --beige: #e4dfcf;
+
+  /* fonts */
+  --title: 'Playfair Display', 'Times New Roman', serif;
+  --text: 'Open Sans', sans-serif;
+  --code: 'Courier', monospace;
+
+  /* font size */
+  --xxs: 0.5em;
+  --xs: 0.8em;
+  --sm: 1.125em;
+  --md: 1.5em;
+  --lg: 2em;
+  --xl: 3.5em;
+  --xxl: 7em;
+
+  /* spacing */
+  --space-1: 1rem;
+  --space-2: 2rem;
+  --space-4: 4rem;
+  --space-6: 6rem;
+  --space-8: 8rem;
+  
+  --space-y-1: 1rem 0rem;
+  --space-y-2: 2rem 0rem;
+  --space-y-4: 2rem 0rem;
+  --space-y-6: 6rem 0rem;
+  --space-y-8: 8rem 0rem;
+
+  --space-x-1: 0rem 1rem;
+  --space-x-2: 0rem 2rem;
+  --space-x-4: 0rem 2rem;
+  --space-x-6: 0rem 6rem;
+  --space-x-8: 0rem 8rem;
+
+}
+
+body {
+  font-family: var(--text);
+  transition: font-size 0.5s ease-out;
+  -webkit-transition: font-size 0.5s ease-out;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--title);
+  font-weight: 600;
+  margin: 0;
+}
+
+.button {
+  border-radius: 0.25rem;
+  border: solid;
+  border-width: 0.15rem;
+  border-color: var(--black);
+  color: var(--black);
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  font-size: var(--xs);
+}
+
+.button:hover {
+  font-weight: 600;
+  border-width: 0.2rem;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 90%;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  body {
+    font-size: 90%;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 100%;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  body {
+    font-size: 110%;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  body {
+    font-size: 120%;
+  }
+}
