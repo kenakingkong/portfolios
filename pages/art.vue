@@ -2,10 +2,19 @@
   <main>
     <!-- TOP NAV -->
     <nav class="section-nav__logo">
-      <LogoArt />
+      <Logo />
     </nav>
-    <nav class="section-nav__about-me">
-      <button>about me</button>
+    <nav class="section-nav__icons">
+      <a
+        v-for="social in socials"
+        :key="'social-' + social.name"
+        :href="social.url"
+        target="_blank"
+        rel="noopener noreferer"
+      >
+        <font-awesome-icon :icon="['fab', social.icon]" class="fa-1x" />
+        {{ social.name }}
+      </a>
     </nav>
 
     <!-- BOTTOM NAV -->
@@ -26,84 +35,32 @@
     </nav>
 
     <!-- GALLERY -->
-    <div
-      class="section-gallery"
-      ref="gallery"
-      @mousedown="handleMouseDown"
-      @mouseup="handleMouseUp"
-      @mousemove="handleMouseMove"
-      :style="
-        'height: ' +
-        Math.round(totalPieces / 4) * 250 +
-        'px;' +
-        'width: ' +
-        Math.round(totalPieces / 2) * 250 +
-        'px;'
-      "
-    >
-      <div v-for="piece in pieces" :key="'piece-'+piece.id" class="piece">
-        <img
-          :src="piece.url"
-          :alt="piece.title"
-          :style="
-            'margin-left: ' +
-            Math.floor(Math.random() * 8) +
-            'rem; ' +
-            'margin-right: ' +
-            Math.floor(Math.random() * 8) +
-            'rem; ' +
-            'margin-top: ' +
-            Math.floor(Math.random() * 8) +
-            'rem; ' +
-            'margin-bottom: ' +
-            Math.floor(Math.random() * 8) +
-            'rem; '
-          "
-        />
-      </div>
-    </div>
-    <!--
-      <h2>
-      i'm makena kong and i ...
-      <ul>
-        <li>paint dog portraits</li>
-        <li>crochet things</li>
-        <li>occassionally sew clothes</li>
-        <li>try to refurbish furniture</li>
-        <li>woodwork (barely)</li>
-        <li>paint on things</li>
-        <li>try to be a graphic designer</li>
-      </ul>
-    </h2>
-    <div class="section-content__icons">
-      <a
-        v-for="social in socials"
-        :key="social - 'social.icon'"
-        :href="social.url"
-        target="_blank"
-        rel="noopener noreferer"
-      >
-        <font-awesome-icon :icon="['fab', social.icon]" class="fa-1x" />
-        {{ social.name }}
-      </a>
-    </div>
-    -->
+    <canvas
+      id="canvas"
+      :width="this.canvasDimensions.width"
+      :height="this.canvasDimensions.height"
+    ></canvas>
   </main>
 </template>
 
-<style src="~/public/css/art.css" lang="css" scoped></style>
+<style src="~/assets/css/art.css" lang="css" scoped></style>
+<style>
+#canvas {
+  background-image: url("~assets/images/grid.png");
+  background-repeat: repeat;
+  overflow: auto;
+}
+</style>
 
 <script lang="ts">
 import Vue from "vue";
 import ISocialLink from "~/models/socialLink";
 import IArtPiece from "~/models/artPiece";
 import IArtCollection from "~/models/artCollection";
-import LogoArt from "~/components/LogoArt.vue";
 import SiteTypes from "~/models/siteTypes";
 
 export default Vue.extend({
   name: "ArtPage",
-  components: { LogoArt },
   head() {
     return {
       title: "makena's art <3",
@@ -116,15 +73,19 @@ export default Vue.extend({
       ],
     };
   },
-  data() {
-    return {
-      galleryPosition: { top: 0, left: 0, x: 0, y: 0 },
-      socials: [] as ISocialLink[],
-      totalPieces: 0 as Number,
-      activeCollection: null as String | null,
-      collections: [] as IArtCollection[],
-      pieces: [] as IArtPiece[],
-    };
+  data: () => ({
+    socials: [] as ISocialLink[],
+    totalPieces: 0 as Number,
+    activeCollection: null as String | null,
+    collections: [] as IArtCollection[],
+    pieces: [] as IArtPiece[],
+    vueCanvas: null as CanvasRenderingContext2D | null,
+    canvasDimensions: { width: 2400, height: 1400 },
+  }),
+  mounted() {
+    let c = document.getElementById("canvas") as HTMLCanvasElement;
+    let ctx = c.getContext("2d") as CanvasRenderingContext2D;
+    this.vueCanvas = ctx;
   },
   created() {
     const getSocials = () => {
@@ -155,53 +116,64 @@ export default Vue.extend({
     getPieces();
     getCollections();
   },
+  updated() {
+    // clear canvas
+    if (!this.vueCanvas) return;
+    this.vueCanvas.clearRect(
+      0,
+      0,
+      this.canvasDimensions.width,
+      this.canvasDimensions.height
+    );
+
+    // random squares
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].forEach(() => {
+      this.drawRect();
+    });
+
+    this.pieces
+      .filter(
+        (piece) =>
+          !this.activeCollection || piece.collection === this.activeCollection
+      )
+      .forEach((piece: IArtPiece) => {
+        this.drawImg(piece.url);
+      });
+  },
   methods: {
+    getRandomInt(max: number) {
+      return Math.floor(Math.random() * max);
+    },
     changeCollection(collectionId: string) {
       this.activeCollection = collectionId;
     },
-    handleMouseDown(event: MouseEvent) {
-      if (!this.$refs.gallery) return;
-      const ref = this.$refs.gallery as HTMLDivElement;
-
-      console.log("mouse down");
-
-      ref.style.cursor = "grabbing";
-      ref.style.userSelect = "none";
-
-      // get current position
-      this.galleryPosition = {
-        // The current scroll
-        left: ref.scrollLeft,
-        top: ref.scrollTop,
-
-        // Get the current mouse position
-        x: event.clientX,
-        y: event.clientY,
+    drawImg(src: string) {
+      const image = new Image();
+      image.src = src;
+      image.onload = () => {
+        if (!this.vueCanvas) return;
+        this.vueCanvas.drawImage(
+          image,
+          this.getRandomInt(this.canvasDimensions.width - 200),
+          this.getRandomInt(this.canvasDimensions.height - 200),
+          image.width / 12,
+          image.height / 12
+        );
       };
-      console.log(this.galleryPosition);
     },
-    handleMouseUp(event: MouseEvent) {
-      if (!this.$refs.gallery) return;
-      const ref = this.$refs.gallery as HTMLDivElement;
+    drawRect() {
+      if (!this.vueCanvas) return;
 
-      console.log("mouse up");
-
-      ref.style.cursor = "grab";
-      ref.style.removeProperty("user-select");
-    },
-    handleMouseMove(event: MouseEvent) {
-      if (!this.$refs.gallery) return;
-      const ref = this.$refs.gallery as HTMLDivElement;
-
-      console.log("mouse move");
-
-      // How far the mouse has been moved
-      const dx = event.clientX - this.galleryPosition.x;
-      const dy = event.clientY - this.galleryPosition.y;
-
-      // Scroll the element
-      ref.scrollTop = this.galleryPosition.top - dy;
-      ref.scrollLeft = this.galleryPosition.left - dx;
+      // draw rect
+      this.vueCanvas.beginPath();
+      this.vueCanvas.rect(
+        this.getRandomInt(this.canvasDimensions.width),
+        this.getRandomInt(this.canvasDimensions.height),
+        this.getRandomInt(600),
+        this.getRandomInt(600)
+      );
+      this.vueCanvas.fillStyle = "#7cce2b";
+      this.vueCanvas.stroke();
     },
   },
 });

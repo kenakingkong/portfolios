@@ -1,70 +1,61 @@
 <template>
   <main>
-    <nuxt-link to="/">
+    <nav class="section-nav">
       <Logo />
-    </nuxt-link>
-    <h1 v-if="error.statusCode === 404">this doesn't exist...</h1>
-    <h1 v-else-if="error.statusCode === 402">you're not allowed there</h1>
-    <h1 v-else>i probably broke something lol</h1>
-    <nav>
-      <nuxt-link to="/"
-        >main
-        <font-awesome-icon
-          :icon="['fas', 'up-right-from-square']"
-          class="fa-1x"
-        />
-      </nuxt-link>
-      <nuxt-link to="/dev"
-        >dev
-        <font-awesome-icon
-          :icon="['fas', 'up-right-from-square']"
-          class="fa-1x"
-      /></nuxt-link>
-      <nuxt-link to="/art"
-        >art
-        <font-awesome-icon
-          :icon="['fas', 'up-right-from-square']"
-          class="fa-1x"
-      /></nuxt-link>
+      <div class="section-nav__links">
+        <NuxtLink to="/dev">dev</NuxtLink>
+        <NuxtLink to="/art">art</NuxtLink>
+      </div>
     </nav>
+    <div class="content">
+      <h1 v-if="error.statusCode === 404">this doesn't exist...</h1>
+      <h1 v-else-if="error.statusCode === 402">you're not allowed there</h1>
+      <h1 v-else>i probably broke something lol</h1>
+    </div>
   </main>
 </template>
 
 <style scoped>
 main {
-  background-color: var(--purple);
-  color: var(--beige);
-  height: 100vh;
   padding: var(--space-1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25vh;
+}
+
 h1 {
   font-size: var(--xl);
+  font-family: var(--space);
   text-align: center;
 }
 
-nav {
+.section-nav {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+}
+
+.section-nav__links {
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
-  text-align: right;
-  font-size: var(--lg);
-  gap: 0.5rem;
+  gap: var(--space-1);
+  width: 100%;
+  font-weight: 800;
 }
 
-nav a {
+.section-nav__links a {
+  color: black;
   text-decoration: none;
-  color: var(--beige);
+  cursor: pointer;
 }
 
-nav a:hover {
-  color: var(--black);
-}
-
-nav svg {
-  margin-left: 1rem;
+.section-nav__links a:hover {
+  color: var(--magenta);
 }
 </style>
 

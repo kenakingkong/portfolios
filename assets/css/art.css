@@ -1,0 +1,130 @@
+main {
+  width: 100%;
+}
+
+/**
+ NAV STYLES
+*/
+
+.section-nav__logo {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.5rem;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.section-nav__icons {
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  display: flex;
+  gap: var(--space-1);
+  font-family: var(--savate)
+}
+
+.section-nav__icons a{
+  color: var(--black);
+  text-decoration: none;
+}
+
+.section-nav__icons a:hover {
+  color: var(--magenta)
+}
+
+.section-nav__collections {
+  position: fixed;
+  bottom: var(--space-1);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  padding: 0 1rem;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 200px;
+  box-shadow: #000;
+}
+
+.section-nav__collections ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: 0;
+}
+
+.section-nav__collections li {
+  list-style-type: none;
+  font-size: var(--xs);
+}
+
+.section-nav__collections span {
+  vertical-align: top;
+  font-size: var(--xxs);
+}
+
+/**
+ GALLERY & PIECE STYLES
+*/
+
+.section-gallery {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  cursor: grab;
+  overflow: auto;
+}
+
+.section-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.piece {
+  width: 250px;
+  height: 250px;
+  display: inline-block;
+}
+
+.piece img {
+  object-fit: contain;
+  height: 60%;
+  width: 60%;
+}
+
+/**
+ BUTTON STYLES
+*/
+
+button {
+  border: none;
+  color: var(--black);
+  background-color: transparent;
+  cursor: pointer;
+  font-size: var(--sm);
+  font-family: var(--savate);
+  font-weight: 800;
+}
+
+.active {
+  color: var(--purple);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.active span {
+  color: var(--purple);
+  text-decoration: none;
+}
+
+button:hover {
+  color: var(--purple);
+}

@@ -3,11 +3,7 @@
     "target": "ES2018",
     "module": "ESNext",
     "moduleResolution": "Node",
-    "lib": [
-      "ESNext",
-      "ESNext.AsyncIterable",
-      "DOM"
-    ],
+    "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
@@ -16,34 +12,18 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "~/*": ["./*"],
+      "@/*": ["./*"]
     },
     "types": [
       "@nuxtjs/axios",
-      "@nuxtjs/auth-next",
-      "@types/express",
-      "@types/jest",
-      "@types/node",
-      "@types/supertest",
       "@nuxtjs/firebase",
       "@nuxt/types",
+      "@types/node",
     ],
-    "typeRoots": [
-      "./types"
-    ],
+    "typeRoots": ["./types"]
   },
-  "include": [
-    "src/**/*", 
-    "tests/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    ".nuxt",
-    "dist"
-  ]               
+  "include": ["src/**/*", "tests/**/*"],
+  "exclude": ["node_modules", ".nuxt", "dist"],
+  "files": ["node_modules/gsap/types/index.d.ts"]
 }

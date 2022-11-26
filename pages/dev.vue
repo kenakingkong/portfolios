@@ -1,19 +1,30 @@
 <template>
   <main>
-    <LogoDev class="logo" />
-    <div class="container">
-      <div class="left-section">
-        <div class="section-name">
-          <h2>makena kong</h2>
-        </div>
-        <div class="section-info">
-          <h1>full stack engineer</h1>
-        </div>
-        <div class="section-location">
-          <font-awesome-icon :icon="['fa', 'location-dot']" class="fa-1x" />
-          san francisco, ca
-        </div>
-        <div class="section-icons">
+    <nav class="nav">
+      <Logo class="logo" />
+      <div class="nav-links">
+        <a href="#about-section">about</a>
+        <a href="#experience-section">experience</a>
+        <a href="#volunteer-section">volunteering</a>
+        <a href="#education-section">education</a>
+        <a href="#skills-section">skills</a>
+        <a href="#projects-section">projects</a>
+      </div>
+      <a href="makena_kong_resume_june_2022.pdf" class="icon-and-text" download>
+        <font-awesome-icon :icon="['fas', 'print']" class="fa-1x" />resume</a
+      >
+    </nav>
+
+    <div class="content">
+      <section id="about-section">
+        <p class="name">makena kong</p>
+        <p class="section-title">about me</p>
+        <p>
+          I’m a Full Stack Engineer that leans towards the front end side of
+          things and a good eye for UI/UX design. I’m a quick prototyper and
+          iterate fast.
+        </p>
+        <div class="about-section-icons">
           <a
             v-for="social in socials"
             :key="'social-' + social.id"
@@ -23,46 +34,105 @@
           >
             <font-awesome-icon :icon="['fab', social.icon]" class="fa-1x" />
           </a>
-        </div>
-      </div>
-
-      <div class="right-section">
-        <h3>what i've been up to</h3>
-        <ul class="section-updates" ref="updates">
-          <li
-            v-for="update in updates"
-            :key="'update-' + update.id"
-            class="section-updates__update"
-            style="right: -4rem; opacity: 0"
+          <span class="icon-and-text"
+            ><font-awesome-icon :icon="['fa', 'location-dot']" class="fa-1x" />
+            san francisco, ca</span
           >
-            <a :href="update.url" target="_blank" rel="noopener noreferer">
-              <font-awesome-icon :icon="['fas', update.icon]" class="fa-1x" />
-              <div class="section-updates__content">
-                <p class="section-updates__title">{{ update.title }}</p>
-                <p class="section-updates__subtitle">{{ update.subtitle }}</p>
-                <p class="section-updates__date">{{ update.date }}</p>
-              </div>
-            </a>
-          </li>
+        </div>
+      </section>
+
+      <section id="experience-section">
+        <p class="section-title">experience</p>
+        <div
+          v-for="update in updates.filter((update) => update.type === 'career')"
+          :key="'update-' + update.id"
+        >
+          <p class="update-title">{{ update.title }}</p>
+          <ul v-if="update.subtitle" class="update-details">
+            <li
+              v-for="(subtitle, index) in update.subtitle.split('\\n')"
+              :key="update.id + index"
+            >
+              {{ subtitle }}
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="volunteer-section">
+        <p class="section-title">volunteering</p>
+        <div
+          v-for="update in updates.filter(
+            (update) => update.type === 'volunteer'
+          )"
+          :key="'update-' + update.id"
+        >
+          <p class="update-title">{{ update.title }}</p>
+        </div>
+      </section>
+
+      <section id="education-section">
+        <p class="section-title">education</p>
+        <p>California Polytechnic State University, San Luis Obispo</p>
+        <p>California Institute of the Arts (online)</p>
+      </section>
+
+      <section id="skills-section">
+        <p class="section-title">skills</p>
+        <p class="update-title">web</p>
+        <ul class="update-details">
+          <li>react & next js</li>
+          <li>vue & nuxt js</li>
+          <li>ruby on rails</li>
         </ul>
-      </div>
+        <p class="update-title">languages</p>
+        <ul class="update-details">
+          <li>js/ts</li>
+          <li>html/css</li>
+          <li>ruby</li>
+          <li>python</li>
+          <li>sql</li>
+        </ul>
+        <p class="update-title">cloud</p>
+        <ul class="update-details">
+          <li>aws</li>
+          <li>gcp</li>
+          <li>heroku</li>
+          <li>python</li>
+          <li>sql</li>
+        </ul>
+      </section>
+
+      <section id="projects-section">
+        <p class="section-title">projects</p>
+        <div
+          v-for="update in updates.filter(
+            (update) => update.type === 'project'
+          )"
+          :key="'update-' + update.id"
+        >
+          <p class="update-title">
+            <a :href="update.url" target="_blank" rel="noopener noreferer">{{
+              update.title
+            }}</a>
+          </p>
+          <p class="update-details">{{ update.subtitle }}</p>
+        </div>
+      </section>
     </div>
   </main>
 </template>
 
-<style src="~/public/css/dev.css" lang="css" scoped></style>
+<style src="~/assets/css/dev.css" lang="css" scoped></style>
 
 <script lang="ts">
 import Vue from "vue";
 import ISocialLink from "~/models/socialLink";
 import IDevUpdate from "~/models/devUpdate";
-import LogoDev from "~/components/LogoDev.vue";
 import SiteTypes from "~/models/siteTypes";
-import { gsap } from "gsap";
 
 export default Vue.extend({
   name: "DevPage",
-  components: { LogoDev },
   head() {
     return {
       title: "makena's dev <3",
@@ -99,17 +169,6 @@ export default Vue.extend({
 
     getSocials();
     getUpdates();
-  },
-  updated() {
-    if (!this.$refs.updates) return;
-    const q = gsap.utils.selector(this.$refs.updates);
-    gsap.to(q(".section-updates__update"), {
-      x: 0,
-      opacity: 1,
-      stagger: 0.5,
-      duration: 2,
-      ease: 'power3'
-    });
   },
 });
 </script>
