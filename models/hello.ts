@@ -1,6 +1,6 @@
 interface Hello {
-  id: string,
-  text: string
+  id: string;
+  text: string;
 }
 
 export default Hello;
