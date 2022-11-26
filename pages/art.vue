@@ -1,21 +1,23 @@
 <template>
   <main>
-    <!-- TOP NAV -->
-    <nav class="section-nav__logo">
-      <Logo />
-    </nav>
-    <nav class="section-nav__icons">
-      <a
-        v-for="social in socials"
-        :key="'social-' + social.name"
-        :href="social.url"
-        target="_blank"
-        rel="noopener noreferer"
-      >
-        <font-awesome-icon :icon="['fab', social.icon]" class="fa-1x" />
-        {{ social.name }}
-      </a>
-    </nav>
+    <div class="section-nav">
+      <NavBar>
+        <template v-slot:nav-links>
+          <div class="nav__links">
+            <a
+              v-for="social in socials"
+              :key="'social-' + social.name"
+              :href="social.url"
+              target="_blank"
+              rel="noopener noreferer"
+            >
+              <font-awesome-icon :icon="['fab', social.icon]" class="fa-1x" />
+              {{ social.name }}
+            </a>
+          </div>
+        </template>
+      </NavBar>
+    </div>
 
     <!-- BOTTOM NAV -->
     <nav class="section-nav__collections">

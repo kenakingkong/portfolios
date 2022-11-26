@@ -1,19 +1,24 @@
 <template>
   <main>
-    <nav class="nav">
-      <Logo class="logo" />
-      <div class="nav-links">
-        <a href="#about-section">about</a>
-        <a href="#experience-section">experience</a>
-        <a href="#volunteer-section">volunteering</a>
-        <a href="#education-section">education</a>
-        <a href="#skills-section">skills</a>
-        <a href="#projects-section">projects</a>
-      </div>
-      <a href="makena_kong_resume_june_2022.pdf" class="icon-and-text" download>
-        <font-awesome-icon :icon="['fas', 'print']" class="fa-1x" />resume</a
-      >
-    </nav>
+    <NavBar>
+      <template v-slot:nav-links>
+        <div class="nav-links">
+          <a href="#about-section">about</a>
+          <a href="#experience-section">experience</a>
+          <a href="#volunteer-section">volunteering</a>
+          <a href="#education-section">education</a>
+          <a href="#skills-section">skills</a>
+          <a href="#projects-section">projects</a>
+        </div>
+        <a
+          href="makena_kong_resume_june_2022.pdf"
+          class="icon-and-text"
+          download
+        >
+          <font-awesome-icon :icon="['fas', 'print']" class="fa-1x" />resume</a
+        >
+      </template>
+    </NavBar>
 
     <div class="content">
       <section id="about-section">

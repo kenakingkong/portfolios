@@ -6,40 +6,10 @@ main {
  NAV STYLES
 */
 
-.section-nav__logo {
+.section-nav {
   position: fixed;
-  top: 0.5rem;
-  left: 0.5rem;
-  padding: 0.5rem;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-.section-nav__icons {
-  position: fixed;
-  top: 0.5rem;
-  right: 0.5rem;
-  padding: 0.5rem;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  display: flex;
-  gap: var(--space-1);
-  font-family: var(--savate)
-}
-
-.section-nav__icons a{
-  color: var(--black);
-  text-decoration: none;
-}
-
-.section-nav__icons a:hover {
-  color: var(--magenta)
+  padding: var(--space-1);
+  width: 98%;
 }
 
 .section-nav__collections {

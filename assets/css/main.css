@@ -15,7 +15,7 @@
   --text: "Open Sans", sans-serif;
   --code: "Courier", monospace;
   --savate: "Savate", sans-serif;
-  --space: 'Space Grotesk', serif;
+  --space: "Space Grotesk", serif;
 
   /* font size */
   --xxs: 0.5em;
@@ -81,6 +81,32 @@ h6 {
   border-width: 0.2rem;
 }
 
+.nav {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-1);
+  width: 100%;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  width: 100%;
+  font-weight: 800;
+}
+
+.nav__links a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav__links a:hover {
+  color: var(--magenta);
+}
+
 /** RESPONSIVE STYLES **/
 
 /* Extra small devices (phones, 600px and down) */
@@ -114,12 +140,11 @@ h6 {
   }
 }
 
-
 @font-face {
   font-family: "Savate";
   src: local("Savate"),
-   url('~assets/fonts/Savate/savate-regular.otf') format("opentype"),
-   url('~assets/fonts/Savate/savate-regular-webfont.ttf') format("truetype");
+    url("~assets/fonts/Savate/savate-regular.otf") format("opentype"),
+    url("~assets/fonts/Savate/savate-regular-webfont.ttf") format("truetype");
   font-style: normal;
   font-display: swap;
 }
@@ -127,8 +152,8 @@ h6 {
 @font-face {
   font-family: "Savate";
   src: local("Savate"),
-   url('~assets/fonts/Savate/savate-italique.otf') format("opentype"),
-   url('~assets/fonts/Savate/savate-italique-webfont.ttf') format("truetype");
+    url("~assets/fonts/Savate/savate-italique.otf") format("opentype"),
+    url("~assets/fonts/Savate/savate-italique-webfont.ttf") format("truetype");
   font-style: italic;
   font-display: swap;
 }

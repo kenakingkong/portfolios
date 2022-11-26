@@ -1,10 +1,9 @@
 <template>
   <main>
-    <nav class="nav">
-      <Logo />
-    </nav>
+    <NavBar />
+
     <section class="page">
-      <Design />
+      <DesignAnimation />
     </section>
 
     <section class="page">more!!!</section>

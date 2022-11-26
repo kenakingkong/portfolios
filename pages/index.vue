@@ -1,13 +1,10 @@
 <template>
   <main>
-    <nav class="section-nav">
-      <Logo />
-      <div class="section-nav__links">
-        <NuxtLink to="/dev">dev</NuxtLink>
-        <NuxtLink to="/art">art</NuxtLink>
-        <NuxtLink to="/design">design</NuxtLink>
-      </div>
-    </nav>
+    <NavBar>
+      <template v-slot:nav-links>
+        <NavLinks />
+      </template>
+    </NavBar>
     <div class="section-content" ref="content" @mouseenter="reanimate">
       <!--<p>hi, i'm makena kong</p>-->
       <p>m</p>
@@ -80,8 +77,7 @@ export default Vue.extend({
   },
   methods: {
     reanimate() {
-      if (this.animation && !this.animation.isActive())
-        this.animation.restart();
+      if (this.animation) this.animation.restart();
     },
   },
 });
@@ -94,31 +90,6 @@ main {
   height: 100vh;
 }
 
-.section-nav {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-1);
-}
-
-.section-nav__links {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--space-1);
-  width: 100%;
-  font-weight: 800;
-}
-
-.section-nav__links a {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.section-nav__links a:hover {
-  color: var(--magenta);
-}
-
 .section-content {
   position: absolute;
   top: 50%;
@@ -126,18 +97,6 @@ main {
   transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
-}
-
-@keyframes animated_text {
-  0% {
-    background-position: 0px 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0px 50%;
-  }
 }
 
 p {
