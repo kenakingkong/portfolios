@@ -51,7 +51,9 @@ export default {
         "faFileCode",
         "faCode",
         "faPaintbrush",
-        "faPrint"
+        "faPrint",
+        "faFile",
+        "faChevronLeft"
       ],
       brands: ["faLinkedin", "faGithub", "faMedium", "faInstagram"],
     },
@@ -62,7 +64,7 @@ export default {
     families: {
       "Playfair+Display": true,
       "Open+Sans": true,
-      "Space+Grotesk": true
+      "Space+Grotesk": true,
     },
   },
 

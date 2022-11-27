@@ -46,6 +46,10 @@
   --space-x-8: 0rem 8rem;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: var(--text);
   transition: font-size 0.5s ease-out;
