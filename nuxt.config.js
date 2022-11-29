@@ -63,6 +63,7 @@ export default {
   googleFonts: {
     families: {
       "Playfair+Display": true,
+      "Epilogue": true,
       "Open+Sans": true,
       "Space+Grotesk": true,
     },

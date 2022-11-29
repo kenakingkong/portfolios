@@ -2,9 +2,9 @@ import IDesignFile from "./designFile";
 
 interface IDesignFileset {
   id: string;
-  name: string;
+  title: string;
   zip: IDesignFile;
-  files: IDesignFile[]
+  files: IDesignFile[];
 }
 
 export default IDesignFileset;

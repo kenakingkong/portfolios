@@ -25,3 +25,7 @@ $ npm run generate
 $ firebase deploy
 ```
 
+## todo
+[ ] move s3 images to 
+[ ] vueuse -> scroll animations
+[ ] vue transitions

@@ -18,5 +18,36 @@
         "url": "https://firebasestorage.googleapis.com/v0/b/portfolios-350309.appspot.com/o/design%2Fchristmas_card_2020%2Fcard_back.jpg?alt=media&token=918e62ec-3991-4d63-a5b0-2acf081ca8fe"
       }
     ]
+  },
+  "1": {
+    "id": 2,
+    "title": "DJ Atti",
+    "zipfile": {
+      "name": "dj_atti_assets.zip",
+      "url": "https://firebasestorage.googleapis.com/v0/b/portfolios-350309.appspot.com/o/design%2Fdj_atti%2Fdj_atti_assets.zip?alt=media&token=df7d7f53-5051-4029-9f41-5643da9091ac"
+    },
+    "files": [
+      {
+        "id": 1,
+        "name": "sample_bw_large.jpg",
+        "url": "https://firebasestorage.googleapis.com/v0/b/portfolios-350309.appspot.com/o/design%2Fdj_atti%2Fsample_bw_large.jpg?alt=media&token=0555362f-0625-48b0-a03a-bb7ccd78fc48"
+      },
+      {
+        "id": 2,
+        "name": "sample_bw.jpg",
+        "url": "https://firebasestorage.googleapis.com/v0/b/portfolios-350309.appspot.com/o/design%2Fdj_atti%2Fsample_bw.jpg?alt=media&token=ed0bac34-b57c-4f34-a7cf-10ebd118330d"
+      },
+      {
+        "id": 3,
+        "name": "sample_colored.jpg",
+        "url": "https://firebasestorage.googleapis.com/v0/b/portfolios-350309.appspot.com/o/design%2Fdj_atti%2Fsample_colored.jpg?alt=media&token=b8d44ebc-13b5-4f76-a9d0-9daca128250a"
+      },
+
+      {
+        "id": 4,
+        "name": "sample_assets.jpg",
+        "url": "https://firebasestorage.googleapis.com/v0/b/portfolios-350309.appspot.com/o/design%2Fdj_atti%2Fsample_assets.jpg?alt=media&token=b98402f0-410d-417a-b8d8-92fb6add9b64"
+      }
+    ]
   }
 }
