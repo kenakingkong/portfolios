@@ -16,8 +16,8 @@
 
     <section class="page">
       <p class="end">
-        everything is done in figma <br />and gimp <br />
-        one day i'll pay for photoshop & illustrator! <br /><br />
+        everything is done in figma <br />and gimp <br /><br />
+        one day i'll pay for <br />photoshop & illustrator! <br /><br />
         mak
       </p>
     </section>
