@@ -1,5 +1,8 @@
 main {
   width: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  position: relative;
 }
 
 /**
@@ -9,7 +12,8 @@ main {
 .section-nav {
   position: fixed;
   padding: var(--space-1);
-  width: 98%;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .section-nav__collections {
@@ -97,4 +101,14 @@ button {
 
 button:hover {
   color: var(--purple);
+}
+
+
+/**
+* CANVAS STYLES
+**/
+#canvas {
+  background-image: url("~assets/images/grid.png");
+  background-repeat: repeat;
+  overflow: auto;
 }

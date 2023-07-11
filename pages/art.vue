@@ -46,13 +46,6 @@
 </template>
 
 <style src="~/assets/css/art.css" lang="css" scoped></style>
-<style>
-#canvas {
-  background-image: url("~assets/images/grid.png");
-  background-repeat: repeat;
-  overflow: auto;
-}
-</style>
 
 <script lang="ts">
 import Vue from "vue";

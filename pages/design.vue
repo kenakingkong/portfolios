@@ -53,7 +53,7 @@ export default Vue.extend({
     const getFilesets = () => {
       const dbFilesets = this.$fire.database.ref("designFiles");
       dbFilesets.get().then((snapshot) => {
-        this.filesets = snapshot.val();
+        this.filesets = snapshot.val().sort((a: IDesignFileset,b: IDesignFileset) => a.sort - b.sort);
       });
     };
 

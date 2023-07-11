@@ -11,9 +11,10 @@
           <a href="#projects-section">projects</a>
         </div>
         <a
-          href="makena_kong_resume_june_2022.pdf"
+          href="https://firebasestorage.googleapis.com/v0/b/portfolios-350309.appspot.com/o/makena_kong_resume_july_2023.pdf?alt=media&token=e72aa3b8-bfc0-449c-815f-41ef5b7bf5cf"
           class="icon-and-text"
-          download
+          target="_blank"
+          rel="noreferrer noopener"
         >
           <font-awesome-icon :icon="['fas', 'print']" class="fa-1x" />resume</a
         >
