@@ -19,7 +19,7 @@
       "@nuxtjs/axios",
       "@nuxtjs/firebase",
       "@nuxt/types",
-      "@types/node",
+      "@types/node"
     ],
     "typeRoots": ["./types"]
   },

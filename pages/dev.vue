@@ -10,14 +10,9 @@
           <a href="#skills-section">skills</a>
           <a href="#projects-section">projects</a>
         </div>
-        <a
-          href="https://firebasestorage.googleapis.com/v0/b/portfolios-350309.appspot.com/o/makena_kong_resume_july_2023.pdf?alt=media&token=e72aa3b8-bfc0-449c-815f-41ef5b7bf5cf"
-          class="icon-and-text"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <font-awesome-icon :icon="['fas', 'print']" class="fa-1x" />resume</a
-        >
+        <a href="https://firebasestorage.googleapis.com/v0/b/portfolios-350309.appspot.com/o/makena_kong_resume_july_2023.pdf?alt=media&token=e72aa3b8-bfc0-449c-815f-41ef5b7bf5cf"
+          class="icon-and-text" target="_blank" rel="noreferrer noopener">
+          <font-awesome-icon :icon="['fas', 'print']" class="fa-1x" />resume</a>
       </template>
     </NavBar>
 
@@ -31,34 +26,21 @@
           iterate fast.
         </p>
         <div class="about-section-icons">
-          <a
-            v-for="social in socials"
-            :key="'social-' + social.id"
-            :href="social.url"
-            target="_blank"
-            rel="noopener noreferer"
-          >
+          <a v-for="social in socials" :key="'social-' + social.id" :href="social.url" target="_blank"
+            rel="noopener noreferer">
             <font-awesome-icon :icon="['fab', social.icon]" class="fa-1x" />
           </a>
-          <span class="icon-and-text"
-            ><font-awesome-icon :icon="['fa', 'location-dot']" class="fa-1x" />
-            san francisco, ca</span
-          >
+          <span class="icon-and-text"><font-awesome-icon :icon="['fa', 'location-dot']" class="fa-1x" />
+            san francisco, ca</span>
         </div>
       </section>
 
       <section id="experience-section">
         <p class="section-title">experience</p>
-        <div
-          v-for="update in updates.filter((update) => update.type === 'career')"
-          :key="'update-' + update.id"
-        >
+        <div v-for="update in updates.filter((update) => update.type === 'career')" :key="'update-' + update.id">
           <p class="update-title">{{ update.title }}</p>
           <ul v-if="update.subtitle" class="update-details">
-            <li
-              v-for="(subtitle, index) in update.subtitle.split('\\n')"
-              :key="update.id + index"
-            >
+            <li v-for="(subtitle, index) in update.subtitle.split('\\n')" :key="update.id + index">
               {{ subtitle }}
             </li>
           </ul>
@@ -67,12 +49,9 @@
 
       <section id="volunteer-section">
         <p class="section-title">volunteering</p>
-        <div
-          v-for="update in updates.filter(
+        <div v-for="update in updates.filter(
             (update) => update.type === 'volunteer'
-          )"
-          :key="'update-' + update.id"
-        >
+          )" :key="'update-' + update.id">
           <p class="update-title">{{ update.title }}</p>
         </div>
       </section>
@@ -111,16 +90,13 @@
 
       <section id="projects-section">
         <p class="section-title">projects</p>
-        <div
-          v-for="update in updates.filter(
+        <div v-for="update in updates.filter(
             (update) => update.type === 'project'
-          )"
-          :key="'update-' + update.id"
-        >
+          ) " :key="'update-' + update.id">
           <p class="update-title">
             <a :href="update.url" target="_blank" rel="noopener noreferer">{{
-              update.title
-            }}</a>
+            update.title
+          }}</a>
           </p>
           <p class="update-details">{{ update.subtitle }}</p>
         </div>
@@ -169,7 +145,7 @@ export default Vue.extend({
     const getUpdates = () => {
       const dbUpdates = this.$fire.database.ref("devUpdates");
       dbUpdates.get().then((snapshot) => {
-        this.updates = snapshot.val();
+        this.updates = snapshot.val().sort((a: IDevUpdate, b: IDevUpdate) => b.sort - a.sort);
       });
     };
 
